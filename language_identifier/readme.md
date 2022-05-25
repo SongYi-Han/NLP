@@ -1,12 +1,11 @@
-## classify the language of Tweets with with linear classification and Multilayer Perceptron
+## classify the language of Tweets
+- build a language classification model works on the character level
 
-* train_dev_set.tsv:
-https://docs.google.com/spreadsheets/d/e/2PACX-1vTOZ2rC82rhNsJduoyKYTsVeH6ukd7Bpxvxn_afOi
-bn3R-eadZGXu82eCU9IRpl4CK_gefEGsYrA_oM/pub?gid=1863430984&single=true&output=tsv
-* test_set.tsv:
-https://docs.google.com/spreadsheets/d/e/2PACX-1vT-KNR9nuYatLkSbzSRgpz6Ku1n4TN4w6kKmFLk
-A6QJHTfQzmX0puBsLF7PAAQJQAxUpgruDd_RRgK7/pub?gid=417546901&single=true&output=tsv
-
+### with linear classification and Multilayer Perceptron
 * use sklearn’s classifier : `SGDClassifier`, `Multinomial Naïve Bayes` and `MLPclassifier` and find best model 
-
 * use `GridSearchCV` to optimize hyperparameter
+
+### with CNN
+* find the optimal model by adjusting : optimizer, learning rate, dropout, # of filters, strides, kernel size, pooling and batch size
+* keep track of the loss to interrupt early if a model does not converge 
+* evaluate model by accuracy and F1-macro
