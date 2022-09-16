@@ -17,7 +17,7 @@
 * package 
   * pandas, nltk and pytorch
 * description 
-  * Train CBOW2 embedding (context width of 2 in both directions) for both datasets
+  * Implement CBOW2 embedding (context width of 2 in both directions) with pytorch
   * Use embedding size of 50 ([This paper](https://aclanthology.org/I17-2006/) provides an insight on how to choose a minimum embedding size while still obtaining
 useful representations)
   * Evaluate embedding by computing nearest neighbour distance
