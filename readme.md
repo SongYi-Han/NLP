@@ -23,10 +23,11 @@ useful representations)
   * Evaluate embedding by computing nearest neighbour distance
 
 ### ㄴ03. Language Identification with CNN
+* dataset 
+  * tweetter messages with 69 different languages ([download here](https://docs.google.com/spreadsheets/d/e/2PACX-1vTOZ2rC82rhNsJduoyKYTsVeH6ukd7Bpxvxn_afOibn3R-eadZGXu82eCU9IRpl4CK_gefEGsYrA_oM/pub?gid=1863430984&single=true&output=tsv))
 * description
+  * Implement the language identifier which can detect the language of tweets 
   * try out different hyperparameter combinations (e.g. optimizer, learning rate, dropout ration, # of filters, strides, kernel sizes, different pooling strategies, batch sizes) 
-
-
 
 ### ㄴ04. Named Entity Recognition using Transformers
 * dataset    
@@ -50,8 +51,14 @@ useful representations)
   * BertForTokenClassification: https://huggingface.co/transformers/model_doc/bert.html?highlight=bertfortokenclassification#transformers.BertForTokenClassification 
   * On the model outputs from different transformers-versions: https://huggingface.co/transformers/migration.html
 
+### ㄴ05. Polarity classifier using Transformers 
+* dataset 
+  * Yelp review data 
+* description 
+  * fine-tune the language model from HuggingFace
+  * visualize and interpret the attention weights using [BertViz](https://github.com/jessevig/bertviz)'s model_view.
 
-### ㄴ05. Topic modeling with LDA and CTMs 
+### ㄴ06. Topic modeling with LDA and CTMs 
 * dataset 
   * titles of publications in three time-periods; before 1990, from 1990 to 2009, and 2010 onwards ([download here](https://dblp.uni-trier.de/xml/dblp.xml.gz))
 * description 
@@ -64,5 +71,5 @@ useful representations)
   * Code: [https://github.com/MilaNLProc/contextualized-topic-models](https://github.com/MilaNLProc/contextualized-topic-models)
 
 
-### ㄴ06. Paper review : Attention is all you need 
+### ㄴ07. Paper review : Attention is all you need 
 
