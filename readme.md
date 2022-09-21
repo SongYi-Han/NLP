@@ -28,10 +28,40 @@ useful representations)
 
 
 
-### ㄴ04. Named Entity Recognition using BERT
+### ㄴ04. Named Entity Recognition using Transformers
+* dataset    
+   polyglot-ner dataset ([learn more](https://polyglot.readthedocs.io/en/latest/NamedEntityRecognition.html)) - import directly with python [`dataset` library](https://huggingface.co/docs/datasets/quickstart)
+* desciption 
+
+  * Use HuggingFace’s BertForTokenClassification-class and initialize it with a pretrained Hugging Face BERT-base model of your chosen language.
+  * create 3 fine-tuned versions of the system:
+     1) Fine-tuned with 1’000 sentences
+     2) Fine-tuned with 3’000 sentences
+     3) Fine-tuned with 3’000 sentences and frozen embeddings
+  * compute f1-micro and f1-macro scores for each fine-tuned model 
+
+* useful link 
+  * fine-tuning pre-trained model : https://huggingface.co/docs/transformers/training
+  * Transformers docs: https://huggingface.co/transformers/index.html
+  * Datasets docs: https://huggingface.co/docs/datasets/
+  * BertTokenizer: https://huggingface.co/transformers/model_doc/bert.html?highlight=berttokenizer#transformers.BertTokenizer 
+  * BertModel: https://huggingface.co/transformers/model_doc/bert.html?highlight=bertmodel#transformers.BertModel
+  * BertForSequenceClassification: https://huggingface.co/transformers/model_doc/bert.html?highlight=bertforsequenceclassification#transformers.BertForSequenceClassification 
+  * BertForTokenClassification: https://huggingface.co/transformers/model_doc/bert.html?highlight=bertfortokenclassification#transformers.BertForTokenClassification 
+  * On the model outputs from different transformers-versions: https://huggingface.co/transformers/migration.html
 
 
-### ㄴ05. Topic modeling 
+### ㄴ05. Topic modeling with LDA and CTMs 
+* dataset 
+  * titles of publications in three time-periods; before 1990, from 1990 to 2009, and 2010 onwards ([download here](https://dblp.uni-trier.de/xml/dblp.xml.gz))
+* description 
+  * Experiment with different numbers of topics and with different ways of preprocessing
+  * CTM is Combined Topic Models which is a pre-trained language model ([paper](https://aclanthology.org/2021.acl-short.96/) / [colab tutorial](https://colab.research.google.com/drive/1fXJjr_rwqvpp1IdNQ4dxqN4Dp88cxO97?usp=sharing))
+  * Comparing the coherence of the topics produced by CTM with the topics produced by LDA
+  
+* useful link 
+  * [A 6min presentation of the paper by one of the authors.](https://underline.io/lecture/25716-pre-training-is-a-hot-topic-contextualized-document-embeddings-improve-topic-coherence)
+  * Code: [https://github.com/MilaNLProc/contextualized-topic-models](https://github.com/MilaNLProc/contextualized-topic-models)
 
 
 ### ㄴ06. Paper review : Attention is all you need 
