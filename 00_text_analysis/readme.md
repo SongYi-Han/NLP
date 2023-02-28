@@ -1,3 +1,5 @@
+## This is my cheat-sheet of the most frequently used basic text analysis technique 💫
+last updated : 28.Feb.2023
 ### Data load 
 * load the zip file from local to colab
   *  https://towardsdatascience.com/3-ways-to-load-csv-files-into-colab-7c14fcbdcb92
@@ -82,3 +84,8 @@ for out in tqdm(pipe(dataset, batch_size=16), total=len(dataset)):
             sentiments.append(out['score'])
 
 ```
+
+### text cleaning 
+will be updated 
+### wordnet 
+will be updated 
