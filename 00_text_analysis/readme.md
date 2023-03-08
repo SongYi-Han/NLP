@@ -26,7 +26,8 @@ last updated : 28.Feb.2023
 import spacy
 nlp = spacy.load('en_core_web_sm')
 
-document = nlp(text)
+doc = nlp(text) # tokens
+sentences = list(doc.sents)
 ```
 more detail information available with spacy such as token.text, token.pos_, token.dep_
 
@@ -40,6 +41,90 @@ from nltk.tokenize import word_tokenize
 from gensim.utils import simple_preprocess
 ```
 
+### text cleaning 
+#### fast punctuation removal
+```python
+from string import punctuation
+
+punc_remover = str.maketrans('','',punctuation) 
+text_nopunc = text_lower.translate(punc_remover)
+```
+
+#### normalize number
+```python
+no_numbers = [t for t in tokens if not t.isdigit()]
+# keep if not a digit, else replace with "#"
+norm_numbers = [t if not t.isdigit() else '#' 
+                for t in tokens ]
+```
+
+#### stopwords
+```python
+nltk.download('stopwords')
+from nltk.corpus import stopwords
+
+stoplist = stopwords.words('english') 
+
+# keep if not a stopword
+nostop = [t for t in norm_numbers if t not in stoplist]
+```
+
+#### stemming 
+```
+from nltk.stem import SnowballStemmer
+stemmer = SnowballStemmer('english') # snowball stemmer, english
+# remake list of tokens, replace with stemmed versions
+tokens_stemmed = [stemmer.stem(t) for t in tokens]
+```
+
+#### lemmatizing
+```
+nltk.download('wordnet')
+nltk.download('omw-1.4')
+from nltk.stem import WordNetLemmatizer
+wnl = WordNetLemmatizer()
+wnl.lemmatize('corporation'), wnl.lemmatize('corporations')
+```
+
+#### one-shot
+```python
+from string import punctuation
+translator = str.maketrans('','',punctuation) 
+from nltk.corpus import stopwords
+stoplist = set(stopwords.words('english'))
+from nltk.stem import SnowballStemmer
+stemmer = SnowballStemmer('english')
+
+def normalize_text(doc):
+    "Input doc and return clean list of tokens"
+    doc = doc.replace('\r', ' ').replace('\n', ' ')
+    lower = doc.lower() # all lower case
+    nopunc = lower.translate(translator) # remove punctuation
+    words = nopunc.split() # split into tokens
+    nostop = [w for w in words if w not in stoplist] # remove stopwords
+    no_numbers = [w if not w.isdigit() else '#' for w in nostop] # normalize numbers
+    stemmed = [stemmer.stem(w) for w in no_numbers] # stem each word
+    return stemmed
+    
+df['tokens_cleaned'] = df['text'].apply(normalize_text)
+```
+
+#### with gensim 
+```python
+from gensim.utils import simple_preprocess # lowercase, tokenized, punctuations/numbers removed
+
+df['tokens_simple'] = df['text'].apply(simple_preprocess)
+```
+
+### POS tagging 
+```python
+nltk.download('averaged_perceptron_tagger')
+from nltk.tag import perceptron 
+from nltk import word_tokenize
+tagger = perceptron.PerceptronTagger()
+tokens = word_tokenize(text)
+tagged_sentence = tagger.tag(tokens)
+```
 
 ### Text data summary (word counts and frequency distribution)
 * frequency distribution
@@ -85,7 +170,6 @@ for out in tqdm(pipe(dataset, batch_size=16), total=len(dataset)):
 
 ```
 
-### text cleaning 
-will be updated 
+
 ### wordnet 
 will be updated 
